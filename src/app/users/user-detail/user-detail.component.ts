@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-  constructor(private _userService: UsersService,
+  constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute) {}
 
   user;
@@ -23,10 +23,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUser(id) {
-    this._userService.getUser(id).subscribe(res => {
-      console.log('res2', res);
-      this.user = res;
-      this.user = JSON.parse(this.user._body);
+    this.userService.getUser(id).subscribe(user => {
+      this.user = user;
     });
   }
 }

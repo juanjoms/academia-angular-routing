@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../services/users.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  constructor(private _usersService: UsersService,
+  constructor(private userService: UserService,
               private router: Router) {}
 
   users;
@@ -18,14 +18,9 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this._usersService.getAllUsers().subscribe(res => {
-      this.users = res;
-      this.users = JSON.parse(this.users._body);
+    this.userService.getAllUsers().subscribe(users => {
+      this.users = users;
     });
-  }
-
-  goToUserDetail(id) {
-    this.router.navigate(['users', id]);
   }
 }
 

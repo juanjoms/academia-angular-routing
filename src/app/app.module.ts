@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 // Modules
 import { RouterModule, Routes } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 
 // Services
-import { UsersService } from './services/users.service';
+import { UserService } from './services/user.service';
 
 
 const routes: Routes = [
@@ -36,9 +36,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpClientModule
   ],
-  providers: [ UsersService ],
+  providers: [ UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

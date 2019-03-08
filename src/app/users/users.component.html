@@ -5,12 +5,14 @@
       <th>Id</th>
       <th>Name</th>
       <th>Email</th>
+      <th></th>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <td ><a (click)="goToUserDetail(user.id)">{{ user.id }}</a></td>
-        <td >{{ user.name }}</td>
-        <td >{{ user.email }}</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td> <a routerLink="/users/{{user.id}}"> View details</a></td>
       </tr>
     </tbody>
   </table>
